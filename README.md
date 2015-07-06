@@ -1,3 +1,14 @@
+
+## updated:
+##### remove output attr from opion, now it only support simple tags: 
+
+```` javascript
+var tags = ['string1', 'string2'];
+````
+##### add readonly attr
+
+##### change tags' color to indigo
+
 ngTagEditor: AngularJS tag input, editor
 ===========
 
