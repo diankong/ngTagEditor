@@ -26,8 +26,8 @@ Add the following files to your application:
 
 ```html
 <link rel="stylesheet" href="ngTagEditor.css" type="text/css"/>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/angularjs/1.2.17/angular.min.js"></script>
-<script type="text/javascript" src="ngTagEditor.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/angularjs/1.3.15/angular.js"></script>
+<script type="text/javascript" src="ngTagEditor.tpls.js"></script>
 ```
 
 ## Usage
@@ -47,11 +47,7 @@ Add something like that to your javascript code:
 var app = angular.module('app', ['ngTagEditor']);
 app.controller('RandomController', function($scope, $http) {
 	$scope.tags = [
-		{name: 'See'},
-		{name: 'how'},
-		{name: 'amazing'},
-		{name: 'is'},
-		{name: 'AngularJS'}
+		"This", "is", "a", "test"
 	];
 });
 ```
@@ -59,7 +55,7 @@ That goes with the following html:
 
 ```html
 <form ng-controller="RandomController">
-	<tag-editor ng-model="tags" output="name"></tag-editor>
+	<tag-editor ng-model="tags" readonly="false"></tag-editor>
 </form>
 ```
 
@@ -69,11 +65,13 @@ You can pass options by the following way: `<tag-editor option="value"></tag-edi
 
 name | values | description | default
 ---- | ------ | ----------- | -------
-output | name, id | If you use suggestions, `id` will replace tag names by tag ids from your database in the hidden input. | name
+readonly | boolean | when true, you won't modify tags anymore | false
 fetch | any valid API URL | required to suggest tags while the user is typing, this way, you can save ids instead of names (see `output`). The API output, must be formated properly, see Suggestions paragraph bellow. | "url/to/my/api.php?query="
 placeholder | any string | Text to display as input placeholder | "Enter a few letters..."
   
 ##### Suggestions
+
+##### haven't tested since fork
 
 First, give the URL of your API through the `fetch` option.
 The data must be formated as follow, as stated [this article](http://labs.omniti.com/labs/jsend).
@@ -81,19 +79,7 @@ The data must be formated as follow, as stated [this article](http://labs.omniti
 ```json
 {
     "status": "success",
-    "data": [{
-        "id": "45",
-        "name": "Say"
-    }, {
-        "id": "23",
-        "name": "Hello"
-    }, {
-        "id": "68",
-        "name": "to"
-    }, {
-        "id": "77",
-        "name": "JSON"
-    }]
+    "data": ["Say","Hello","to","JSON"]
 }
 ```
 
