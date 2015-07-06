@@ -1,4 +1,6 @@
 
+## This is a fork from ngTagEditor, updated a few things to make it more useful for most simple cases
+
 ## updated:
 ##### remove output attr from opion, now it only support simple tags: 
 
